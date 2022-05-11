@@ -1,0 +1,7 @@
+<% @spendings.each do |spending| %>
+  <%= link_to edit_spending_path(spending) do %>
+    <%= spending.genre.name %>
+    <%= spending.spending_amount %>円
+    <%= spending.created_at.strftime('%Y/%m/%d') %><br>
+  <% end %>
+<% end %>

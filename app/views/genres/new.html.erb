@@ -1,0 +1,5 @@
+<%= form_with model: @genre, url: genres_path, local: true do |f| %>
+  <%= f.label :支出カテゴリー %>
+  <%= f.text_field :name %>
+  <%= f.submit "登録" %>
+<% end %>

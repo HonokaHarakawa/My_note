@@ -1,0 +1,13 @@
+<%= link_to "マイページ", user_path(current_user) %>
+<h2>
+  収入
+  <%= link_to "支出", new_spending_path %>
+</h2>
+
+<%= form_with model: @income, url: incomes_path do |f| %>
+
+<%= f.label :収入 %>
+<%= f.text_field :income_amount %>　円
+
+<%= f.submit '登録' %>
+<% end %>

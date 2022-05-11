@@ -1,0 +1,9 @@
+<%= form_with model: @spending, url: spending_path do |f| %>
+  <%= f.label :使った金額 %>
+  <%= f.text_field :spending_amount %>　円<br>
+
+  <%= f.label :カテゴリー %>
+  <%= collection_select(:genre, :name, @genres, :id, :name) %>
+
+  <%= f.submit '登録' %>
+<% end %>

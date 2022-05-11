@@ -1,0 +1,21 @@
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+
+<%= link_to "支出管理", new_spending_path %>
+
+<%= link_to "ユーザー一覧", users_path %>
+
+<%= link_to "カレンダー", spendings_path %>
+
+<% if @user.id == current_user.id %>
+  <h2>マイページ</h2>
+<% else %>
+  <h2><%= @user.name %>さんページ</h2>
+<% end %>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+ <h3><%= @user.name %></h3>
+  <h4><%= @user.sex_i18n %> <%= @user.location %>在住 <%= @user.profession %></h4>
+<% if @user.id == current_user.id %>
+  <%= link_to "編集", edit_user_path(@user) %>
+<% end %>
+
+

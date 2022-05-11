@@ -1,0 +1,10 @@
+<h2>ユーザー一覧</h2>
+
+<% @users.each do |user| %>
+  <%= link_to user_path(user) do %>
+    <%= user.name %>
+    <%= user.sex_i18n %>
+    <%= user.location %>在住
+    <%= user.profession %><br>
+  <% end %>
+<% end %>
