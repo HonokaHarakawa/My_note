@@ -4,3 +4,10 @@ ja:
       sex:
         male: '男性'
         woman: '女性'
+
+    spending:
+      payment_method:
+        cash: '現金'
+        credit: 'クレジット'
+        electric: '電子マネー'
+        code: 'コード決済'

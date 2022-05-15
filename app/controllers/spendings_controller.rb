@@ -6,6 +6,10 @@ class SpendingsController < ApplicationController
     @spendings = @user.spendings.all
   end
 
+  def show
+    @spending = Spending.find(params[:id])
+  end
+
   def new
     @spending = Spending.new
     @genres = Genre.all
@@ -31,9 +35,15 @@ class SpendingsController < ApplicationController
     redirect_to spendings_path
   end
 
+  def destroy
+    @spending = Spending.find(params[:id])
+    @spending.destroy
+    redirect_to spendings_path
+  end
+
   private
 
   def spending_params
-    params.require(:spending).permit(:spending_amount, :genre_id)
+    params.require(:spending).permit(:spending_amount, :genre_id, :memo, :payment_method, :start_time)
   end
 end

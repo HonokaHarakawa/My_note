@@ -1,9 +1,28 @@
 <%= form_with model: @spending, url: spending_path do |f| %>
+  <%= f.label :日付 %>
+  <%= f.date_select :start_time %><br>
+
   <%= f.label :使った金額 %>
   <%= f.text_field :spending_amount %>　円<br>
 
+
   <%= f.label :カテゴリー %>
   <%= collection_select(:genre, :name, @genres, :id, :name) %>
+  <%= f.label :メモ %>
+  <%= f.text_field :memo %><br>
+
+  <%= f.label :支払方法 %>
+  <%= f.radio_button :payment_method, "cash" %>
+  <%= f.label :現金 %>
+
+  <%= f.radio_button :payment_method, "credit" %>
+  <%= f.label :クレジット %>
+
+  <%= f.radio_button :payment_method, "electric" %>
+  <%= f.label :電子マネー %>
+
+  <%= f.radio_button :payment_method, "code" %>
+  <%= f.label :コード決済 %>
 
   <%= f.submit '登録' %>
 <% end %>

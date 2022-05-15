@@ -1,10 +1,3 @@
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-
-<%= link_to "支出管理", new_spending_path %>
-
-<%= link_to "ユーザー一覧", users_path %>
-
-<%= link_to "カレンダー", spendings_path %>
 
 <% if @user.id == current_user.id %>
   <h2>マイページ</h2>
@@ -16,6 +9,27 @@
   <h4><%= @user.sex_i18n %> <%= @user.location %>在住 <%= @user.profession %></h4>
 <% if @user.id == current_user.id %>
   <%= link_to "編集", edit_user_path(@user) %>
+  <%= link_to "目標", new_goal_path %>
 <% end %>
+<table>
+    <thead>
+      <tr>
+        <th>目標</th><th>目標額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.goals.each do |goal| %>
+      <tr>
+        <td><%= goal.goal %></td>
+        <td>￥<%= goal.target_amount %></td>
+       <% if goal.user_id == current_user.id %>
+        <td><%= link_to "編集", edit_goal_path(goal) %></td>
+        <td><%= link_to "削除", goal_path, method: :delete %></td>
+       <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+
+</table>
 
 

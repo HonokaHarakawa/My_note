@@ -1,0 +1,7 @@
+<%= @spending.start_time.strftime("%Y-%m-%d") %><br>
+<%= @spending.genre.name %>　<%= @spending.memo %><br>
+<%= @spending.spending_amount %>円<br>
+<%= @spending.payment_method_i18n %><br>
+
+<%= link_to "編集", edit_spending_path %>
+<%= link_to "削除", spending_path, method: :delete %>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   enum sex: { male: 0, woman: 1 }
   has_many :incomes
+  has_many :goals
   has_many :spendings
    attachment :profile_image
 end

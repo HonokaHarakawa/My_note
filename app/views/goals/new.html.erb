@@ -1,0 +1,12 @@
+<h2>目標</h2>
+
+<%= form_with model: @goal, url: goals_path do |f| %>
+  <%= f.label :目標 %><br>
+  <%= f.text_area :goal %><br>
+
+
+  <%= f.label :目標額 %>
+  <%= f.text_field :target_amount %>円<br>
+
+  <%= f.submit "登録" %>
+<% end %>

@@ -1,10 +1,22 @@
 <h2>ユーザー一覧</h2>
 
-<% @users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= user.name %>
-    <%= user.sex_i18n %>
-    <%= user.location %>在住
-    <%= user.profession %><br>
-  <% end %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ニックネーム</th><th>性別</th><th>都道府県</th><th>職業</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @users.each do |user| %>
+    　<% if user.is_active == true %>
+    　<tr>
+      　 <td><%= user.name %></td>
+      　 <td><%= user.sex_i18n %></td>
+      　 <td><%= user.location %></td>
+      　 <td><%= user.profession %></td>
+    　</tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

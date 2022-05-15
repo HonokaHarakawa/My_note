@@ -1,0 +1,13 @@
+<h2>目標編集</h2>
+
+<%= form_with model: @goal, url: goal_path do |f| %>
+
+  <%= f.label :目標 %>
+  <%= f.text_area :goal %>
+
+  <%= f.label :目標額 %>
+  <%= f.text_field :target_amount %>
+
+  <%= f.submit "編集" %>
+
+<% end %>

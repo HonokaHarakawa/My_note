@@ -20,12 +20,6 @@ Genre.create!(
       name: "美容"
     },
     {
-      name: "交際費"
-    },
-    {
-      name: "医療費"
-    },
-    {
       name: "教育費"
     },
     {
@@ -42,6 +36,12 @@ Genre.create!(
     },
     {
       name: "住居費"
+    },
+    {
+      name: "趣味・娯楽"
+    },
+    {
+      name: "その他"
     }
   ]
 )
