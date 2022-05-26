@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
     @user = User.find(params[:id])
-    @goals = current_user.goals.all
-
+    @goals = @user.goals.all
+    @spendings = @user.spendings.all
+    @spendings = @spendings.where(start_time: Time.current.all_month)
+    @month = Date.today.month
   end
 
   def edit
@@ -18,8 +20,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path
-
   end
+  
+  
 
   private
   def user_params

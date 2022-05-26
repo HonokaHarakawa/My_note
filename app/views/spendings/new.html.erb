@@ -11,7 +11,8 @@
 
 
 <%= f.label :カテゴリー %>
-<%= collection_select(:genre, :name, @genres, :id, :name) %>
+<%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+
 <%= f.label :メモ %>
 <%= f.text_field :memo %><br>
 

@@ -6,8 +6,12 @@
   <% spendings.each do |spending| %>
     <div>
       <%= link_to spending_path(spending) do %>
-        -<%= spending.spending_amount %>円
+        <%= spending.memo %>
+        -<%= spending.spending_amount.to_s(:delimited) %>円
       <% end %>
+
     </div>
   <% end %>
 <% end %>
+
+

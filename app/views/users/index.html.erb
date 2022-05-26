@@ -11,7 +11,12 @@
     <% @users.each do |user| %>
     　<% if user.is_active == true %>
     　<tr>
-      　 <td><%= user.name %></td>
+      　 <td>
+        　   <%= link_to user_path(user) do %>
+        　     <%= user.name %>
+        　   <% end %>
+      　  </td>
+
       　 <td><%= user.sex_i18n %></td>
       　 <td><%= user.location %></td>
       　 <td><%= user.profession %></td>

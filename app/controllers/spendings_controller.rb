@@ -1,9 +1,9 @@
 class SpendingsController < ApplicationController
 
   def index
-    @spendings = Spending.all
     @user = current_user
     @spendings = @user.spendings.all
+
   end
 
   def show
@@ -13,14 +13,12 @@ class SpendingsController < ApplicationController
   def new
     @spending = Spending.new
     @genres = Genre.all
-    @genre = Genre.new
   end
 
   def create
     @spending = Spending.new(spending_params)
     @spending.user_id = current_user.id
-    @spending.genre_id = params[:genre][:name]
-    @spending.save
+    @spending.save!
     redirect_to spendings_path
   end
 
