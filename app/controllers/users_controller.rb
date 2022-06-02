@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @goals = @user.goals.all
-    @spendings = @user.spendings.all
-    @spendings = @spendings.where(start_time: Time.current.all_month)
+    @spendings = @user.spendings.where(start_time: Time.current.all_month)
+    @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
     @month = Date.today.month
   end
 

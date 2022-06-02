@@ -56,6 +56,15 @@
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h2>
         </div>
+        <div class="col-6">
+          <h2>先月の支出
+            <% @sum = 0 %>
+            <% @last_month.each do |last| %>
+              <% @sum += last.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円
+          </h2>
+        </div>
       </div>
 
       <div class="row mb-3">
