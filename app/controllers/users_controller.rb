@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @spendings = @user.spendings.where(start_time: Time.current.all_month)
     @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
     @month = Date.today.month
+    @chart = @spendings.joins(:genre).group("genres.name").sum(:spending_amount).sort_by {|_,v|v}.reverse.to_h
   end
 
   def edit
@@ -21,8 +22,8 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path
   end
-  
-  
+
+
 
   private
   def user_params

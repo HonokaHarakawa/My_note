@@ -7,7 +7,7 @@
     <div>
       <%= link_to spending_path(spending) do %>
         <%= spending.genre.name %>
-        -<%= spending.spending_amount.to_s(:delimited) %>円
+        ￥<%= spending.spending_amount.to_s(:delimited) %>
       <% end %>
 
     </div>
