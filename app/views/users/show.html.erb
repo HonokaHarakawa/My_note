@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-4 text-center">
+<div class="container col-12">
+  <div class="row">
+    <div class="col-4 text-center mt-5">
       <%= attachment_image_tag @user, :profile_image, :fill, 130, 130, fallback: "no_image.jpg", class: "rounded-circle"  %>
        <h4><%= @user.name %></h4>
         <h4><%= @user.sex_i18n %> <%= @user.location %>在住 <%= @user.profession %></h4>
@@ -46,7 +46,7 @@
       </table>
     </div>
 
-    <div class="col-8">
+    <div class="col-8 mt-5">
       <div class="row mb-5">
         <div class="col-6">
           <h2><%= @month %>月の支出
