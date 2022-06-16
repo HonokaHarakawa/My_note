@@ -42,6 +42,6 @@ class SpendingsController < ApplicationController
   private
 
   def spending_params
-    params.require(:spending).permit(:spending_amount, :genre_id, :memo, :payment_method, :start_time)
+    params.require(:spending).permit(:spending_amount, :genre_id, :memo, :start_time)
   end
 end

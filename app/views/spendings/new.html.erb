@@ -16,19 +16,6 @@
 <%= f.label :メモ %>
 <%= f.text_field :memo %><br>
 
-<%= f.label :支払方法 %>
-<%= f.radio_button :payment_method, "cash" %>
-<%= f.label :現金 %>
-
-<%= f.radio_button :payment_method, "credit" %>
-<%= f.label :クレジット %>
-
-<%= f.radio_button :payment_method, "electric" %>
-<%= f.label :電子マネー %>
-
-<%= f.radio_button :payment_method, "code" %>
-<%= f.label :コード決済 %>
-
     <%= f.submit '登録' %>
 
 
