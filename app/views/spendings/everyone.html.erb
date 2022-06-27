@@ -1,0 +1,24 @@
+<div class="container col-10">
+  <div class="row justify-content-around">
+    <div class="col-5 mt-5">
+      <h2>使ったお金</h2>
+      <% @user.each do |user| %>
+        <% user.spendings.each do |s| %>
+          <%= s.user.name %>さん
+          <%= s.genre.name %>
+          <%= s.spending_amount %>円
+          <%= s.memo %><br>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-5 mt-5">
+      <h2>目標</h2>
+      <% @user.each do |user| %>
+        <% user.goals.each do |g| %>
+          <%= g.user.name %>さん
+          <%= g.goal %><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

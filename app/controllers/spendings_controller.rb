@@ -3,7 +3,10 @@ class SpendingsController < ApplicationController
   def index
     @user = current_user
     @spendings = @user.spendings.all
+  end
 
+  def everyone
+    @user = User.where.not(id: current_user.id).all
   end
 
   def show

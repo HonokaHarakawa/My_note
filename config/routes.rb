@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :incomes
-  resources :spendings
+  resources :spendings do
+    collection do
+      get 'everyone'
+    end
+  end
   resources :genres
   resources :goals
 end
