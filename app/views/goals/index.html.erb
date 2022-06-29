@@ -1,0 +1,30 @@
+<div class="container col-12">
+  <div class="row justify-content-center">
+      <%= form_with model: @goal, url: goals_path do |f| %>
+      
+        <%= f.label :目標 %>
+        <%= f.text_area :goal %>
+
+        <%= f.label :目標額 %>
+        <%= f.text_field :target_amount %>円
+
+        <%= f.submit "登録" %>
+      <% end %>
+
+    <div class="col-6">
+      <table class="table">
+
+          <thead>
+            <tr>
+              <th>目標</th>
+            </tr>
+          </thead>
+          <% @goals.each do |goal| %>
+          <tbody>
+            <td><%= goal.goal %></td>
+          </tbody>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>

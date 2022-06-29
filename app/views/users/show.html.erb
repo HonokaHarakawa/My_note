@@ -9,41 +9,6 @@
           <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cog"></i></button>
         <% end %>
       <% end %>
-
-      <table class="table mt-3">
-          <thead>
-            <tr>
-              <th>目標</th><th>目標額</th>
-              <% if @user.id == current_user.id %>
-              <th>
-                <%= link_to new_goal_path do %>
-                  <i class="far fa-plus-square"></i>
-                <% end %>
-              </th>
-              <% end %>
-            </tr>
-          </thead>
-          <tbody>
-            <% @goals.each do |goal| %>
-            <tr>
-              <td><%= goal.goal %></td>
-              <td>￥<%= goal.target_amount.to_s(:delimited) %></td>
-             <% if goal.user_id == current_user.id %>
-              <td>
-                <%= link_to edit_goal_path(goal) do %>
-                  <i class="fas fa-edit"></i>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to goal_path(goal), method: :delete do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-              </td>
-             <% end %>
-            </tr>
-            <% end %>
-          </tbody>
-      </table>
     </div>
 
     <div class="col-8 mt-5">
