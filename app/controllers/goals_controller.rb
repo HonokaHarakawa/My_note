@@ -3,6 +3,7 @@ class GoalsController < ApplicationController
   def index
     @goal = Goal.new
     @goals = Goal.all
+    
   end
 
   def create
@@ -31,6 +32,6 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:goal, :target_amount)
+    params.require(:goal).permit(:goal)
   end
 end

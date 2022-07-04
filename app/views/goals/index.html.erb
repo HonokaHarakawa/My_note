@@ -1,27 +1,35 @@
 <div class="container col-12">
-  <div class="row justify-content-center">
+  <div class="row">
+    <div class="col-5 text-center">
+      <div class="mt-5">
+        <h2>目標</h2>
+      </div>
       <%= form_with model: @goal, url: goals_path do |f| %>
-      
-        <%= f.label :目標 %>
+
+      <div class="mt-4 mb-4">
         <%= f.text_area :goal %>
-
-        <%= f.label :目標額 %>
-        <%= f.text_field :target_amount %>円
-
-        <%= f.submit "登録" %>
+      </div>
+        <%= f.submit "登録", class:"btn btn-secondary" %>
       <% end %>
-
-    <div class="col-6">
+    </div>
+    <div class="col-7 mt-5">
       <table class="table">
-
           <thead>
             <tr>
               <th>目標</th>
             </tr>
           </thead>
           <% @goals.each do |goal| %>
+
           <tbody>
-            <td><%= goal.goal %></td>
+             <td>
+               <%= link_to user_path(goal.user) do %>
+                 <div class="text-dark">
+                   <%= attachment_image_tag goal.user, :profile_image,:fill,30,30, fallback: "no_image.jpg", class: "rounded-circle" %>
+                   <%= goal.goal %>
+                 </div>
+               <% end %>
+              </td>
           </tbody>
           <% end %>
       </table>
