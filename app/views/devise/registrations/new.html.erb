@@ -1,65 +1,104 @@
-<h2>新規登録</h2>
-
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :ニックネーム %><br />
-    <%= f.text_field :name, autofocus: true %>
+<div class="container col-12">
+  <div class="row">
+    <div class="col-6 text-center mt-5">
+      <h2>新規登録</h2>
+    </div>
+  </div>
+    
+    
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :プロフィール画像 %>
+    </div>
+    <div class="col-6">
+      <%= f.attachment_field :profile_image %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :性別 %><br />
-    <%= f.radio_button :sex, "male" %>
-    <%= f.label :男性 %>
-    <%= f.radio_button :sex, "woman" %>
-    <%= f.label :女性 %>
-  </div> 
 
-  <div class="field">
-    <%= f.label :生年月日 %><br />
-    <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1) %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :ニックネーム %>
+    </div>
+    <div class="col-6">
+      <%= f.text_field :name, autofocus: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :職業 %><br />
-    <%= f.text_field :profession %>
+
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :性別 %>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :sex, "male" %>
+      <%= f.label :男性 %>
+      <%= f.radio_button :sex, "woman" %>
+      <%= f.label :女性 %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :お住まい（都道府県）%><br />
-    <%= f.text_field :location %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :生年月日 %>
+    </div>
+    <div class="col-6">
+      <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year), default: Date.new(1989, 1, 1) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :職業 %>
+    </div>
+    <div class="col-6">
+      <%= f.text_field :profession %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :お住まい（都道府県）%>
+    </div>
+    <div class="col-6">
+      <%= f.text_field :location %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :メールアドレス %>
+    </div>
+    <div class="col-6">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :あなたの家計簿をみんなに公開しますか？ %><br />
-    <%= f.radio_button :is_active, true %>
-    <%= f.label :is_active, '公開', value: true%>
-    <%= f.radio_button :is_active, false %>
-    <%= f.label :is_active, '非公開', value: false %>
+  <div class="row">
+    <div class="col-6 text-right mb-3">
+      <%= f.label :あなたの家計簿をみんなに公開しますか？ %>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, '公開', value: true%>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, '非公開', value: false %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "登録" %>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= f.submit "登録" %>
+    </div>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <% end %>
+  <div class="row">
+    <div class="col-6 text-center mt-5">
+      <p>会員の方は<%= link_to "こちら", new_user_session_path %></p>
+    </div>
+  </div>
+  
+</div>
