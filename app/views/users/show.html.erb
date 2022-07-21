@@ -13,13 +13,6 @@
           <thead>
             <tr>
               <th>目標</th>
-              <% if @user.id == current_user.id %>
-              <th>
-                <%= link_to new_goal_path do %>
-                  <i class="far fa-plus-square"></i>
-                <% end %>
-              </th>
-              <% end %>
             </tr>
           </thead>
           <tbody>

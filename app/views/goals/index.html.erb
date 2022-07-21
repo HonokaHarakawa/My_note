@@ -26,6 +26,7 @@
                <%= link_to user_path(goal.user) do %>
                  <div class="text-dark">
                    <%= attachment_image_tag goal.user, :profile_image,:fill,30,30, fallback: "no_image.jpg", class: "rounded-circle" %>
+                   <%= goal.user.name %>さん
                    <%= goal.goal %>
                  </div>
                <% end %>

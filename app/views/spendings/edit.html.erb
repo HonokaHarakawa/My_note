@@ -1,17 +1,51 @@
-<%= form_with model: @spending, url: spending_path do |f| %>
-  <%= f.label :日付 %>
-  <%= f.date_select :start_time %><br>
+<div class="container col-12">
+  <div class="row">
+    <div class="col-6 text-center mt-5">
+      <h2>支出編集</h2>
+    </div>
+  </div>
 
-  <%= f.label :使った金額 %>
-  <%= f.text_field :spending_amount %>　円<br>
+    <%= form_with model: @spending, url: spending_path do |f| %>
+  <div class="row">
+    <div class="col-5 text-right mb-3">
+      <%= f.label :日付 %>
+    </div>
+    <div class="col-7">
+      <%= f.date_select :start_time %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-5 text-right mb-3">
+      <%= f.label :使った金額 %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :spending_amount %>　円
+    </div>
+  </div>
 
-  <%= f.label :カテゴリー %>
-  <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
-  
-  <%= f.label :メモ %>
-  <%= f.text_field :memo %><br>
+  <div class="row">
+    <div class="col-5 text-right mb-3">
+      <%= f.label :カテゴリー %>
+    </div>
+    <div class="col-7">
+      <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-5 text-right mb-3">
+      <%= f.label :メモ %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :memo %>
+    </div>
+  </div>
 
-  <%= f.submit '登録' %>
-<% end %>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= f.submit '登録' %>
+    </div>
+  </div>
+    <% end %>
+</div>
