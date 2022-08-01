@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   def index
     @goal = Goal.new
     @goals = Goal.all
-    
+    @user = User.where.not(id: current_user.id).all
   end
 
   def create
