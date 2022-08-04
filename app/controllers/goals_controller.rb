@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new
     @goals = Goal.all
     @user = User.where.not(id: current_user.id).all
+    @like = Like.new
   end
 
   def create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_143905) do
+ActiveRecord::Schema.define(version: 2022_08_04_125908) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2022_06_16_143905) do
   create_table "goals", force: :cascade do |t|
     t.integer "user_id"
     t.text "goal"
-    t.integer "target_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +30,15 @@ ActiveRecord::Schema.define(version: 2022_06_16_143905) do
     t.string "income_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "goal_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_likes_on_goal_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "spendings", force: :cascade do |t|

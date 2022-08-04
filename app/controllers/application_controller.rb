@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 
-  private
+  protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :profile_image_id, :sex, :birthday, :profession, :location, :is_active])

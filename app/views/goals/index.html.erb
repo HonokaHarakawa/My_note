@@ -21,32 +21,28 @@
           </thead>
           <% @goals.each do |goal| %>
             <tbody>
+
               <tr>
-                <%= link_to user_path(goal.user) do %>
-               <td>
+               <td><%= link_to user_path(goal.user) do %>
                   <div class="text-dark">
-                    <%= attachment_image_tag goal.user, :profile_image,:fill,30,30, fallback: "no_image.jpg", class: "rounded-circle" %>
-                    <%= goal.user.name %>
+                    <%= attachment_image_tag goal.user,:profile_image, fallback: "no_image.jpg", size:'40x40', class: "rounded-circle" %>
+                    <%= goal.user.name %><% end %>
                 </td>
+
                 <td>
                   <%= goal.goal %>
                 </td>
-                  <% if goal.user_id == current_user.id %>
                 <td>
-                  <%= link_to edit_goal_path(goal) do %>
-                    <i class="fas fa-edit"></i>
+                  <% if current_user.already_liked?(goal) %>
+                    <%= link_to "いいねをはずす", goal_like_path(goal), method: :delete %>
+                  <% else %>
+                    <%= link_to "いいね", goal_likes_path(goal), method: :post %>
                   <% end %>
-                  <%= link_to goal_path(goal), method: :delete do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                  
+                  <%= goal.likes.count %>
                 </td>
-                    <% end %>
-                   </div>
-                 
-                </td>
-                <% end %>
+
               </tr>
+
             </tbody>
           <% end %>
       </table>

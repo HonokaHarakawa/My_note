@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
   enum sex: { male: 0, woman: 1 }
   has_many :incomes
-  has_many :goals
+  has_many :goals, dependent: :destroy
   has_many :spendings
-   attachment :profile_image
+  attachment :profile_image
+  has_many :likes
+  def already_liked?(goal)
+    self.likes.exists?(goal_id: goal.id)
+  end
 end
