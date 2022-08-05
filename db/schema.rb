@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_125908) do
+ActiveRecord::Schema.define(version: 2022_08_05_143538) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_125908) do
     t.text "goal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "achievement", default: false, null: false
   end
 
   create_table "incomes", force: :cascade do |t|

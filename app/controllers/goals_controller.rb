@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user_id = current_user.id
     @goal.save
-    redirect_to user_path(current_user)
+    redirect_to goals_path, notice: "目標が登録されました"
   end
 
   def edit
@@ -33,6 +33,6 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:goal)
+    params.require(:goal).permit(:goal, :achievement)
   end
 end
