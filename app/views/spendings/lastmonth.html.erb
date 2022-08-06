@@ -39,9 +39,9 @@
                   <% end %>
                 <% else %>
                   <%= link_to goal_likes_path(goal), method: :post do %>
-                    <div class="text-dark">
-                      <i class="far fa-heart"></i>
-                    </div>
+                  <div class="text-dark">
+                    <i class="far fa-heart"></i>
+                  </div>
                   <% end %>
                 <% end %>
                 <%= goal.likes.count %>
@@ -68,17 +68,6 @@
     <div class="col-6 mt-5">
       <div class="row mb-5">
         <div class="col-6">
-          <h2><%= @month %>月の支出
-            <% @sum = 0 %>
-            <% @spendings.each do |spending| %>
-              <% @sum += spending.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h2>
-        </div>
-        <div class="col-6">
-          <% if @user.id == current_user.id %>
-          <%= link_to lastmonth_spendings_path do %>
-          <div class="text-dark">
           <h2>先月の支出
             <% @sum = 0 %>
             <% @last_month.each do |last| %>
@@ -86,9 +75,6 @@
             <% end %>
             <%= @sum.to_s(:delimited) %>円
           </h2>
-          </div>
-          <% end %>
-          <% end %>
         </div>
       </div>
 
@@ -96,7 +82,7 @@
         <div class="col-6">
           <h3>食費<i class="fas fa-utensils"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:1).each do |g| %>
+            <% @last_month.where(genre_id:1).each do |g| %>
               <% @sum += g.spending_amount %>
               <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -105,7 +91,7 @@
         <div class="col-6">
           <h3>日用品<i class="fas fa-pump-soap"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:2).each do |g| %>
+            <% @last_month.where(genre_id:2).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -116,7 +102,7 @@
         <div class="col-6">
           <h3>衣服<i class="fas fa-tshirt"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:3).each do |g| %>
+            <% @last_month.where(genre_id:3).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -125,7 +111,7 @@
         <div class="col-6">
           <h3>美容<i class="fas fa-heart"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:4).each do |g| %>
+            <% @last_month.where(genre_id:4).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -136,7 +122,7 @@
         <div class="col-6">
           <h3>教育費<i class="fas fa-school"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:5).each do |g| %>
+            <% @last_month.where(genre_id:5).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -145,7 +131,7 @@
         <div class="col-6">
           <h3>光熱費<i class="fas fa-faucet"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:6).each do |g| %>
+            <% @last_month.where(genre_id:6).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -156,7 +142,7 @@
         <div class="col-6">
           <h3>交際費<i class="fas fa-users"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:7).each do |g| %>
+            <% @last_month.where(genre_id:7).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -165,7 +151,7 @@
         <div class="col-6">
           <h3>交通費<i class="fas fa-subway"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:8).each do |g| %>
+            <% @last_month.where(genre_id:8).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -176,7 +162,7 @@
         <div class="col-6">
           <h3>通信費<i class="fas fa-mobile-alt"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:9).each do |g| %>
+            <% @last_month.where(genre_id:9).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -185,7 +171,7 @@
         <div class="col-6">
           <h3>住居費<i class="fas fa-home"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:10).each do |g| %>
+            <% @last_month.where(genre_id:10).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -196,7 +182,7 @@
         <div class="col-6">
           <h3>趣味・娯楽<i class="fas fa-shopping-cart"></i>
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:11).each do |g| %>
+            <% @last_month.where(genre_id:11).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>
@@ -205,7 +191,7 @@
         <div class="col-6">
           <h3>その他
             <% @sum = 0 %>
-            <% @spendings.where(genre_id:12).each do |g| %>
+            <% @last_month.where(genre_id:12).each do |g| %>
               <% @sum += g.spending_amount %>
             <% end %>
             <%= @sum.to_s(:delimited) %>円</h3>

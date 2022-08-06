@@ -5,8 +5,12 @@ class SpendingsController < ApplicationController
     @spendings = @user.spendings.all
   end
 
-  def everyone
-    @user = User.where.not(id: current_user.id).all
+  def lastmonth
+    @user = current_user
+    @goals = @user.goals.all
+    @spendings = @user.spendings.where(start_time: Time.current.all_month)
+    @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
+    @chart = @last_month.joins(:genre).group("genres.name").sum(:spending_amount).sort_by {|_,v|v}.reverse.to_h
   end
 
   def show
@@ -21,8 +25,11 @@ class SpendingsController < ApplicationController
   def create
     @spending = Spending.new(spending_params)
     @spending.user_id = current_user.id
-    @spending.save!
+    if @spending.save
     redirect_to spendings_path
+    else
+      render :new
+    end
   end
 
   def edit

@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
   def update
     @goal = Goal.find(params[:id])
     @goal.update(goal_params)
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "目標が更新されました"
   end
 
   def destroy

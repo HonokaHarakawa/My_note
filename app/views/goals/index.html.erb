@@ -13,7 +13,7 @@
       <% end %>
     </div>
     <div class="col-4 mt-5">
-      <table class="table">
+      <table class="table table-striped">
           <thead>
             <tr>
               <th>目標</th><th></th><th></th>
@@ -27,7 +27,9 @@
                <td><%= link_to user_path(goal.user) do %>
                   <div class="text-dark">
                     <%= attachment_image_tag goal.user,:profile_image, fallback: "no_image.jpg", size:'40x40', class: "rounded-circle" %>
-                    <%= goal.user.name %><% end %>
+                    <%= goal.user.name %>
+                  </div>
+                    <% end %>
                 </td>
 
                 <td>
@@ -36,11 +38,15 @@
                 <td>
                   <% if current_user.already_liked?(goal) %>
                     <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
+                    <div class="text-dark">
                       <i class="fas fa-heart"></i>
+                    </div>
                     <% end %>
                   <% else %>
                     <%= link_to goal_likes_path(goal), method: :post do %>
+                    <div class="text-dark">
                       <i class="far fa-heart"></i>
+                    </div>
                     <% end %>
                   <% end %>
                   <%= goal.likes.count %>
@@ -52,7 +58,7 @@
       </table>
     </div>
     <div class="col-5 mt-5">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>達成</th><th></th><th></th>
@@ -63,18 +69,24 @@
           <tr>
             <% if goal.achievement == true %>
             <td><%= link_to user_path(goal.user) do %>
+            <div class="text-dark">
               <%= attachment_image_tag goal.user,:profile_image, fallback: "no_image.jpg", size:'40x40', class: "rounded-circle" %>
               <%= goal.user.name %>
+            </div>
             </td>
             <td><%= goal.goal %></td>
             <td>
                   <% if current_user.already_liked?(goal) %>
                     <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
+                    <div class="text-dark">
                       <i class="fas fa-heart"></i>
+                      </div>
                     <% end %>
                   <% else %>
                     <%= link_to goal_likes_path(goal), method: :post do %>
+                    <div class="text-dark">
                       <i class="far fa-heart"></i>
+                    </div>
                     <% end %>
                   <% end %>
                   <%= goal.likes.count %>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :spendings do
     collection do
-      get 'everyone'
+      get 'lastmonth'
     end
   end
   resources :genres

@@ -12,8 +12,10 @@
       <% spendings.each do |spending| %>
         <div>
           <%= link_to spending_path(spending) do %>
+          <div class="text-dark">
             <%= spending.genre.name %>
             ￥<%= spending.spending_amount.to_s(:delimited) %>
+          </div>
           <% end %>
 
         </div>
