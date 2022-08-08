@@ -9,9 +9,21 @@
     <div class="col-5 text-right mt-3">
       <h4><%= f.label :目標 %></h4>
     </div>
+    
+
     <div class="col-7 mt-3">
       <%= f.text_area :goal %>
     </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12 text-center mt-3">
+      <%= f.radio_button :achievement, true %>
+      <%= f.label :achievement, '達成', value: true %>
+      <%= f.radio_button :achievement, false %>
+      <%= f.label :achievement, '未達成', value: false %>
+    </div>
+
   </div>
 
   <div class="row">

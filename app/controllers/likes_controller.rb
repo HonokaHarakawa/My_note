@@ -1,5 +1,13 @@
 class LikesController < ApplicationController
 
+  def index
+    @user = current_user
+    likes = Like.where(user_id: @user.id).pluck(:goal_id)
+    @like_goals = Goal.find(likes)
+
+  end
+
+
   def create
     @like = current_user.likes.create(goal_id: params[:goal_id])
     redirect_back(fallback_location: root_path)

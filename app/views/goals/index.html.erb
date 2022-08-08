@@ -1,18 +1,8 @@
-<div class="container col-12">
+<div class="container">
+  <%= link_to "いいね", likes_path %>
   <div class="row">
-    <div class="col-3 text-center">
-      <div class="mt-5">
-        <h2>目標</h2>
-      </div>
-      <%= form_with model: @goal, url: goals_path do |f| %>
 
-      <div class="mt-4 mb-4">
-        <%= f.text_area :goal %>
-      </div>
-        <%= f.submit "登録", class:"btn btn-secondary" %>
-      <% end %>
-    </div>
-    <div class="col-4 mt-5">
+    <div class="col-10 mt-5">
       <table class="table table-striped">
           <thead>
             <tr>
@@ -31,22 +21,26 @@
                   </div>
                     <% end %>
                 </td>
-
+                
+                <td>
+                  <% if goal.achievement == true %>
+                    <div class="text-danger">達成</div>
+                  <% else %>
+                    <div class="text-secondary">未達成</div>
+                  <% end %>
+                  </td>
+                
                 <td>
                   <%= goal.goal %>
                 </td>
                 <td>
                   <% if current_user.already_liked?(goal) %>
                     <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
-                    <div class="text-dark">
                       <i class="fas fa-heart"></i>
-                    </div>
                     <% end %>
                   <% else %>
                     <%= link_to goal_likes_path(goal), method: :post do %>
-                    <div class="text-dark">
                       <i class="far fa-heart"></i>
-                    </div>
                     <% end %>
                   <% end %>
                   <%= goal.likes.count %>
@@ -57,48 +51,4 @@
           <% end %>
       </table>
     </div>
-    <div class="col-5 mt-5">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>達成</th><th></th><th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @goals.each do |goal| %>
-          <tr>
-            <% if goal.achievement == true %>
-            <td><%= link_to user_path(goal.user) do %>
-            <div class="text-dark">
-              <%= attachment_image_tag goal.user,:profile_image, fallback: "no_image.jpg", size:'40x40', class: "rounded-circle" %>
-              <%= goal.user.name %>
-            </div>
-            </td>
-            <td><%= goal.goal %></td>
-            <td>
-                  <% if current_user.already_liked?(goal) %>
-                    <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
-                    <div class="text-dark">
-                      <i class="fas fa-heart"></i>
-                      </div>
-                    <% end %>
-                  <% else %>
-                    <%= link_to goal_likes_path(goal), method: :post do %>
-                    <div class="text-dark">
-                      <i class="far fa-heart"></i>
-                    </div>
-                    <% end %>
-                  <% end %>
-                  <%= goal.likes.count %>
-                </td>
-            <% end %>
-            <% end %>
-          </tr>
-          <% end %>
-        </tbody>
-
-      </table>
-    </div>
-
-  </div>
 </div>

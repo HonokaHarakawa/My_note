@@ -18,30 +18,15 @@
           <tbody>
             <% @goals.each do |goal| %>
             <tr>
-              <% if goal.user_id == current_user.id %>
-              <td>
-                <%= form_with model: goal, url: goal_path(goal) do |f| %>
-                  <%= f.radio_button :achievement, true %>
-                  <%= f.label :achievement, '達成', value: true %>
-                  <%= f.radio_button :achievement, false %>
-                  <%= f.label :achievement, '未達成', value: false %>
-                  <%= f.submit "更新" %>
-                <% end %>
-              </td>
-              <% end %>
               <td><%= goal.goal %></td>
               <td>
                 <% if current_user.already_liked?(goal) %>
                   <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
-                  <div class="text-dark">
                     <i class="fas fa-heart"></i>
-                  </div>
                   <% end %>
                 <% else %>
                   <%= link_to goal_likes_path(goal), method: :post do %>
-                  <div class="text-dark">
                     <i class="far fa-heart"></i>
-                  </div>
                   <% end %>
                 <% end %>
                 <%= goal.likes.count %>
@@ -49,14 +34,10 @@
               <% if goal.user_id == current_user.id %>
                 <td>
                   <%= link_to edit_goal_path(goal) do %>
-                  <div class="text-dark">
                     <i class="fas fa-edit"></i>
-                  </div>
                   <% end %>
                   <%= link_to goal_path(goal), method: :delete, data: {confirm: "削除しますか？"} do %>
-                  <div class="text-dark">
                     <i class="far fa-trash-alt"></i>
-                  </div>
                   <% end %>
                 </td>
                 <% end %>

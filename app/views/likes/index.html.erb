@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-8 mt-5">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>いいね一覧</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @like_goals.each do |like_goal| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag like_goal.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+            <%= like_goal.user.name %>
+          </td>
+          <td><%= like_goal.goal %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
