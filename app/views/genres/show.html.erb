@@ -1,0 +1,10 @@
+<h2><%= @genre.name %>一覧</h2>
+
+<% @spendings.each do |spending| %>
+
+<% if spending.user_id == current_user.id %>
+  <%= spending.start_time.strftime('%m/%d') %>
+  <%= spending.spending_amount %>円
+  <%= spending.memo %>
+<% end %>
+<% end %>

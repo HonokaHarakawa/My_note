@@ -1,6 +1,6 @@
 <div class="container col-12">
   <div class="row">
-    <div class="col-4 text-center mt-5">
+    <div class="col-5 text-center mt-5">
       <%= attachment_image_tag @user, :profile_image, :fill, 130, 130, fallback: "no_image.jpg", class: "rounded-circle"  %>
        <h4><%= @user.name %></h4>
         <h4><%= @user.sex_i18n %> <%= @user.location %>在住 <%= @user.profession %></h4>
@@ -9,168 +9,18 @@
           <button type="button" class="btn btn-outline-secondary"><i class="fas fa-cog"></i></button>
         <% end %>
       <% end %>
-    <div class="mt-3">
-      <h2>目標</h2>
-    </div>
+      <% if @user.id == current_user.id %>
+      <div class="mt-3">
+        <h3>目標</h3>
+      </div>
       <%= form_with model: @goal, url: goals_path do |f| %>
 
-      <div class="mt-4 mb-4">
+      <div class="mt-4 mb-3">
         <%= f.text_area :goal %>
       </div>
         <%= f.submit "登録", class:"btn btn-outline-secondary"%>
       <% end %>
-      </div>
-    <div class="col-4 mt-5">
-      <div class="row">
-        <div class="text-center">
-          <h2><%= @month %>月の支出
-            <% @sum = 0 %>
-            <% @spendings.each do |spending| %>
-              <% @sum += spending.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="text-center mb-3">
-          <% if @user.id == current_user.id %>
-          <%= link_to lastmonth_spendings_path do %>
-          <div class="text-dark">
-          <h2>先月の支出
-            <% @sum = 0 %>
-            <% @last_month.each do |last| %>
-              <% @sum += last.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円
-          </h2>
-          </div>
-          <% end %>
-          <% end %>
-       </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>食費<i class="fas fa-utensils"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:1).each do |g| %>
-              <% @sum += g.spending_amount %>
-              <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>日用品<i class="fas fa-pump-soap"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:2).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>衣服<i class="fas fa-tshirt"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:3).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>美容<i class="fas fa-heart"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:4).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>教育費<i class="fas fa-school"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:5).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>光熱費<i class="fas fa-faucet"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:6).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>交際費<i class="fas fa-users"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:7).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>交通費<i class="fas fa-subway"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:8).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>通信費<i class="fas fa-mobile-alt"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:9).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>住居費<i class="fas fa-home"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:10).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-    </div>
-
-      <div class="row mb-3">
-        <div class="col-6">
-          <h4>趣味・娯楽<i class="fas fa-shopping-cart"></i>
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:11).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-
-        <div class="col-6">
-          <h4>その他
-            <% @sum = 0 %>
-            <% @spendings.where(genre_id:12).each do |g| %>
-              <% @sum += g.spending_amount %>
-            <% end %>
-            <%= @sum.to_s(:delimited) %>円</h4>
-        </div>
-      </div>
-      <%= pie_chart @chart, donut: true, suffix: "円" %>
-    </div>
-  <div class="col-4">
+      <% end %>
     <table class="table mt-3">
             <thead>
               <tr>
@@ -219,5 +69,174 @@
               <% end %>
             </tbody>
         </table>
-  </div>
+    </div>
+    <div class="col-7 mt-5">
+      <div class="row">
+        <div class="col-6 mb-2">
+          <h2><%= @month %>月の支出
+            <% @sum = 0 %>
+            <% @spendings.each do |spending| %>
+              <% @sum += spending.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h2>
+        </div>
+        <div class="col-6 mb-2">
+          <% if @user.id == current_user.id %>
+          <%= link_to lastmonth_spendings_path do %>
+          <div class="text-dark">
+          <h2>先月の支出
+            <% @sum = 0 %>
+            <% @last_month.each do |last| %>
+              <% @sum += last.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円
+          </h2>
+          </div>
+          <% end %>
+          <% end %>
+       </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>食費<i class="fas fa-utensils"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:1).each do |g| %>
+              <% @sum += g.spending_amount %>
+              <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>日用品<i class="fas fa-pump-soap"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:2).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>衣服<i class="fas fa-tshirt"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:3).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>美容<i class="fas fa-heart"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:4).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>教育費<i class="fas fa-school"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:5).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>光熱費<i class="fas fa-faucet"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:6).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>交際費<i class="fas fa-users"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:7).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>交通費<i class="fas fa-subway"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:8).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>通信費<i class="fas fa-mobile-alt"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:9).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>住居費<i class="fas fa-home"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:10).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+    </div>
+
+      <div class="row mb-3">
+        <div class="col-6">
+          <h3>趣味・娯楽<i class="fas fa-shopping-cart"></i>
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:11).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+
+        <div class="col-6">
+          <h3>その他
+            <% @sum = 0 %>
+            <% @spendings.where(genre_id:12).each do |g| %>
+              <% @sum += g.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円</h3>
+        </div>
+      </div>
+
+      <% @genres.each do |genre| %>
+      　<% if @user.id == current_user.id %>
+
+          <%= link_to genre_path(genre) do %>
+          <h3>
+            <%= genre.name %>
+            <% @sum = 0 %>
+            <% genre.spendings.each do |spending| %>
+              <% @sum += spending.spending_amount %>
+            <% end %>
+            <%= @sum.to_s(:delimited) %>円
+          </h3>
+          <% end %>
+        <% else %>
+          <h3>
+            <%= genre.name %>
+          </h3>
+        <% end %>
+
+      <% end %>
+      <%= pie_chart @chart, donut: true, suffix: "円" %>
+    </div>
 </div>

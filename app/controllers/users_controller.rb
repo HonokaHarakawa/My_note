@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @genres = Genre.all
     @goal = Goal.new
     @goals = @user.goals.all
     @spendings = @user.spendings.where(start_time: Time.current.all_month)
