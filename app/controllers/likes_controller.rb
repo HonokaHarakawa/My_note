@@ -4,7 +4,6 @@ class LikesController < ApplicationController
     @user = current_user
     likes = Like.where(user_id: @user.id).pluck(:goal_id)
     @like_goals = Goal.find(likes)
-
   end
 
 

@@ -18,24 +18,20 @@
             <% if user_signed_in? %>
 
             <li class="nav-item">
-              <%= link_to "マイページ", user_path(current_user), class:'nav-link text-dark' %>
+              <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "入力", new_spending_path, class:'nav-link text-dark' %>
+              <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "カレンダー", spendings_path, class:'nav-link text-dark' %>
-            </li>
-            
-            <li class="nav-item">
-              <%= link_to "ユーザー一覧", users_path, class:'nav-link text-dark' %>
+              <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
             </li>
             
             <li class="nav-item">
-              <%= link_to "目標",  goals_path, class:'nav-link text-dark' %>
+              <%= link_to "Goal",  goals_path, class:'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
+              <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
             </li>
             <% end %>
           </ul>

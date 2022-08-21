@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'top#index'
   devise_for :users
-  resources :users
+  resources :users 
   resources :incomes
   resources :likes, only: [:index]
   resources :goals do
@@ -13,6 +13,5 @@ Rails.application.routes.draw do
       get 'lastmonth'
     end
   end
-  resources :genres
 
 end

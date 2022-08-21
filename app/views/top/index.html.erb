@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12 text-center mt-5">
-      <h1>My note</h1>
+      <div class="top">
+        <h1>My note</h1>
+      </div>
     </div>
   </div>
 
@@ -10,12 +12,14 @@
       <p>簡単に支出管理ができる家計簿アプリです。</p>
     </div>
   </div>
-
+<div class="top">
   <div class="row">
     <div class="col-12 text-center mt-5">
-      <h2><%= link_to "ログイン",new_user_session_path %>|
-          <%= link_to "新規登録", new_user_registration_path %></h2>
+      <h2>
+        <%= link_to "LogIn",new_user_session_path, class:'text-dark' %>  
+        <%= link_to "SignUp", new_user_registration_path, class:'text-dark' %>
+      </h2>
     </div>
   </div>
-
+</div>
 </div>

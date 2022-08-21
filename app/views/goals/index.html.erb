@@ -1,12 +1,33 @@
-<div class="container">
-  <%= link_to "いいね", likes_path %>
-  <div class="row">
+<div class="container col-12">
 
-    <div class="col-10 mt-5">
+  <div class="row">
+    <div class="col-6 mt-5">
+      <% @spendings.each do |spending| %>
+      <div class="col-6">
+        <div class="p-3 border bg-light">
+        <div class="row">
+          <%= attachment_image_tag spending.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+          <%= spending.user.name %>
+        </div>
+        <div class="row">
+          <%= spending.spending_amount.to_s(:delimited) %>円
+        </div>
+        <div class="row">
+          <%= spending.genre.name %>
+          <%= spending.memo %>
+        </div>
+        <div class="row">
+          <%= spending.start_time.strftime("%Y/%m/%d") %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-6 mt-5">
       <table class="table table-striped">
           <thead>
             <tr>
-              <th>目標</th><th></th><th></th>
+              <th>目標</th><th></th><th></th><th></th>
             </tr>
           </thead>
           <% @goals.each do |goal| %>
@@ -21,7 +42,7 @@
                   </div>
                     <% end %>
                 </td>
-                
+
                 <td>
                   <% if goal.achievement == true %>
                     <div class="text-danger">達成</div>
@@ -29,17 +50,17 @@
                     <div class="text-secondary">未達成</div>
                   <% end %>
                   </td>
-                
+
                 <td>
                   <%= goal.goal %>
                 </td>
                 <td>
                   <% if current_user.already_liked?(goal) %>
-                    <%= link_to goal_like_path(goal,goal.likes), method: :delete do %>
+                    <%= link_to goal_like_path(goal,goal.likes), class:"text-dark", method: :delete do %>
                       <i class="fas fa-heart"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to goal_likes_path(goal), method: :post do %>
+                    <%= link_to goal_likes_path(goal), class:"text-dark", method: :post do %>
                       <i class="far fa-heart"></i>
                     <% end %>
                   <% end %>
@@ -51,4 +72,5 @@
           <% end %>
       </table>
     </div>
+  </div>
 </div>
