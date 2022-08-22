@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :spendings
   attachment :profile_image
   has_many :likes
+  has_many :liked_goals, through: :likes, source: :goal
   def already_liked?(goal)
     self.likes.exists?(goal_id: goal.id)
   end

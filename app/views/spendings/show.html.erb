@@ -6,24 +6,24 @@
   </div>
 
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-3">
       <h3><%= @spending.genre.name %>¥<%= @spending.spending_amount.to_s(:delimited) %></h3>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-3">
       <h3><%= @spending.memo %></h3>
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-3">
       <h4>
-        <%= link_to "戻る", spendings_path %>|
-        <%= link_to "編集", edit_spending_path %>|
-        <%= link_to "削除", spending_path, method: :delete %>
+        <%= link_to "戻る", spendings_path, class:"text-dark" %>|
+        <%= link_to "編集", edit_spending_path, class:"text-dark" %>|
+        <%= link_to "削除", spending_path, class:"text-dark", method: :delete %>
       </h4>
     </div>
   </div>
