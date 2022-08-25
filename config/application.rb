@@ -16,8 +16,8 @@ module MyNote
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.time_zone = 'Tokyo'
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
-    config.time_zone = 'Asia/Tokyo'
   end
 end

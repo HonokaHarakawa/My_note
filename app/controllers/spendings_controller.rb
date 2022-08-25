@@ -20,13 +20,15 @@ class SpendingsController < ApplicationController
   def new
     @spending = Spending.new
     @genres = Genre.all
+    @user = current_user
+    @spendings = @user.spendings.order(start_time: :desc)
   end
 
   def create
     @spending = Spending.new(spending_params)
     @spending.user_id = current_user.id
     if @spending.save
-    redirect_to spendings_path
+    redirect_to new_spending_path
     else
       render :new
     end

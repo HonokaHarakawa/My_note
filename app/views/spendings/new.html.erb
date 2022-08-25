@@ -2,46 +2,80 @@
   <%= @spending.errors.count %>件のエラーが発生しました
 <% end %>
 <div class="container col-12">
-  <div class="row">
-    <div class="col-6 text-center mt-5">
-      <h2>支出</h2>
+  <div class="row justify-content-center">
+    <div class="col-7">
+
+      <div class="row">
+        <div class="col-6 text-center mt-5">
+          <h3>支出登録</h3>
+        </div>
+      </div>
+        <%= form_with model: @spending, url: spendings_path, local: true do |f| %>
+      <div class="row">
+        <div class="col-6 text-right mb-3">
+          <%= f.label :日付 %>
+        </div>
+        <div class="col-6">
+          <%= f.date_select :start_time %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-right mb-3">
+          <%= f.label :使った金額 %>(半角)
+        </div>
+        <div class="col-6">
+          <%= f.text_field :spending_amount %>　円
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-right mb-3">
+          <%= f.label :カテゴリー %>
+        </div>
+        <div class="col-6">
+          <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 text-right mb-3">
+          <%= f.label :メモ %>
+        </div>
+        <div class="col-6">
+          <%= f.text_field :memo %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <%= f.submit '登録', class:"btn btn-outline-secondary" %>
+        </div>
+      </div>
+        <% end %>
+    </div>
+    <div class="col-5">
+      <div class="mt-5">
+        <h3>今月の支出</h3>
+      </div>
+      <% @spendings.each do |spending| %>
+      <div class="border">
+      <div class="col-5">
+        
+        <div class="row">
+          <%= spending.spending_amount.to_s(:delimited) %>円
+        </div>
+        <div class="row">
+          <%= spending.genre.name %>
+          <%= spending.memo %>
+        </div>
+        <div class="row">
+          <%= spending.start_time.strftime("%Y/%m/%d") %>
+        </div>
+        </div>
+      </div>
+      
+      <% end %>
+
     </div>
   </div>
-
-
-    <%= form_with model: @spending, url: spendings_path, local: true do |f| %>
-  <div class="row mb-5 mt-3">
-    <div class='col-12 text-center'>
-      <%= f.label :日付 %>
-      <%= f.date_select :start_time %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class='col-12 mb-5 text-center'>
-      <%= f.label :使った金額 %>(半角)
-      <%= f.text_field :spending_amount %>　円
-    </div>
-  </div>
-
-  <div class="row">
-    <div class='col-12 mb-5 text-center'>
-      <%= f.label :カテゴリー %>
-      <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class='col-12 mb-5 text-center'>
-      <%= f.label :メモ %>
-      <%= f.text_field :memo %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class='col-12 text-center'>
-      <%= f.submit '登録', class:"btn btn-outline-secondary" %>
-    </div>
-  </div>
-    <% end %>
 </div>

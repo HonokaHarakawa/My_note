@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_05_143538) do
+ActiveRecord::Schema.define(version: 2022_08_25_151412) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_08_05_143538) do
     t.datetime "updated_at", null: false
     t.integer "genre_id"
     t.string "memo"
-    t.datetime "start_time"
+    t.date "start_time"
   end
 
   create_table "users", force: :cascade do |t|

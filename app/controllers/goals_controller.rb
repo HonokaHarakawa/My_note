@@ -1,10 +1,10 @@
 class GoalsController < ApplicationController
 
   def index
-    @spendings = Spending.all.order(start_time: :desc)
     @goal = Goal.new
     @goals = Goal.all
     @user = User.where.not(id: current_user.id).all
+    @spendings = Spending.order(start_time: :desc)
     @like = Like.new
   end
 
