@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root 'top#index'
   devise_for :users
-  resources :users 
+  devise_scope :user do
+    root "devise/sessions#new"
+  end
+  resources :users
   resources :incomes
   resources :likes, only: [:index]
   resources :goals do

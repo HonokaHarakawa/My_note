@@ -21,13 +21,13 @@ class SpendingsController < ApplicationController
     @spending = Spending.new
     @genres = Genre.all
     @user = current_user
-    @spendings = @user.spendings.order(start_time: :desc)
   end
 
   def create
     @spending = Spending.new(spending_params)
     @spending.user_id = current_user.id
     if @spending.save
+    flash[:success] = '登録が完了しました'
     redirect_to new_spending_path
     else
       render :new
@@ -47,8 +47,10 @@ class SpendingsController < ApplicationController
 
   def destroy
     @spending = Spending.find(params[:id])
-    @spending.destroy
+    if @spending.destroy
+    flash[:success] = '削除しました'
     redirect_to spendings_path
+    end
   end
 
   private
