@@ -2,9 +2,10 @@ class GenresController < ApplicationController
 
 
   def show
+    @user = current_user
     @genre = Genre.find(params[:id])
-    @spendings = current_user.spendings.where(start_time: Date.today.all_month)
-    @spendings = @genre.spendings
+    @genre_spendings = @genre.spendings
+    @spendings = @genre_spendings.where(start_time: Time.current.all_month)
   end
 
   def new

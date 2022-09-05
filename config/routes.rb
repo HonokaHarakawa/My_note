@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     root "devise/sessions#new"
   end
-  resources :users
+  resources :users do
+    resources :genres, only: [:show]
+  end
   resources :incomes
   resources :likes, only: [:index]
   resources :goals do
