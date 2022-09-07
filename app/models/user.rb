@@ -7,12 +7,7 @@ class User < ApplicationRecord
   enum sex: { male: 0, woman: 1 }
   has_many :incomes
   validates :name, presence: true
-  has_many :goals, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :spendings
   attachment :profile_image
-  has_many :likes
-  has_many :liked_goals, through: :likes, source: :goal
-  def already_liked?(goal)
-    self.likes.exists?(goal_id: goal.id)
-  end
 end

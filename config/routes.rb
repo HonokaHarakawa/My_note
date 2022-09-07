@@ -6,16 +6,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :genres, only: [:show]
   end
-  resources :incomes
-  resources :likes, only: [:index]
-  resources :goals do
-    resources :likes, only: [:create, :destroy]
-  end
 
   resources :spendings do
     collection do
       get 'lastmonth'
     end
   end
+  resources :posts
 
 end

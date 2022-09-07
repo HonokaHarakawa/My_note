@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5 text-center mt-5">
+       <h2>新規投稿</h2>
+    </div>
+  </div>
+
+    <%= form_with model: @post, url: posts_path, local: true do |f| %>
+
+      <%= f.label :画像 %>
+      <%= f.attachment_field :image %>
+
+      <%= f.label :本文 %>
+      <%= f.text_field :body %>
+
+      <%= f.submit "投稿" %>
+
+    <% end %>
+</div>
