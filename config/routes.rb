@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get 'lastmonth'
     end
   end
-  resources :posts
+  resources :posts do
+    resource :likes, only: [:create, :destroy, :show]
+   end
 
 end

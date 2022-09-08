@@ -7,13 +7,32 @@
 
     <%= form_with model: @post, url: posts_path, local: true do |f| %>
 
+  <div class="row">
+    <div class="col-5 text-right">
       <%= f.label :画像 %>
+    </div>
+    <div class="col-5">
       <%= f.attachment_field :image %>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="col-5 text-right mt-3">
       <%= f.label :本文 %>
-      <%= f.text_field :body %>
+    </div>
+    <div class="col-5 mt-3">
+      <%= f.text_area :body %>
+    </div>
+  </div>
 
+
+  <div class="row">
+    <div class="col-12 text-center">
       <%= f.submit "投稿" %>
+    </div>
+  </div>
+
 
     <% end %>
 </div>
