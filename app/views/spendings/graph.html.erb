@@ -1,0 +1,57 @@
+<div class="col-12 mt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-2">
+          <h2><%= @month %>月の支出
+            <% @sum = 0 %>
+            <% @spendings.each do |spending| %>
+              <% @sum += spending.spending_amount %>
+            <% end %>
+            ¥<%= @sum.to_s(:delimited) %></h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center mt-5">
+          <%= pie_chart @chart, donut: true, suffix: "円" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+  　　    　<% @genres.each do |genre| %>
+            <h3>
+              <%= link_to user_genre_path(@user.id,genre), class:"text-dark" do %>
+              <div class="row">
+                <div class="col-6 text-right mt-3">
+                  <%= genre.name %>
+                </div>
+                <% @sum = 0 %>
+                <% genre.spendings.where(start_time: Time.current.all_month).each do |spending| %>
+                  <% if spending.user.id == @user.id%>
+                    <% @sum += spending.spending_amount %>
+                  <% end %>
+                <% end %>
+                <div class="col-6 text-left mt-3">
+                  ¥<%= @sum.to_s(:delimited) %>
+                </div>
+              </div>
+              <% end %>
+            </h3>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center mt-3 mb-5">
+          <%= link_to lastmonth_spendings_path do %>
+          <div class="text-dark">
+          <h2>先月の支出
+            <% @sum = 0 %>
+            <% @last_month.each do |last| %>
+              <% @sum += last.spending_amount %>
+            <% end %>
+            ¥<%= @sum.to_s(:delimited) %>
+          </h2>
+          </div>
+          <% end %>
+        </div>
+      </div>

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.all
     @genres = Genre.all
     @spendings = @user.spendings.where(start_time: Time.current.all_month)
     @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)

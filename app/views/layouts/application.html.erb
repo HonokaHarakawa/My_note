@@ -20,9 +20,15 @@
             <li class="nav-item">
               <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
             </li>
+            
             <li class="nav-item">
               <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
             </li>
+            
+            <li class="nav-item">
+              <%= link_to "Graph", graph_spendings_path, class:'nav-link text-dark' %>
+            </li>
+            
             <li class="nav-item">
               <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
             </li>

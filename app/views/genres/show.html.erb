@@ -15,11 +15,21 @@
 　  <tbody>
 　    <% @spendings.each do |spending| %>
 　    <% if spending.user_id == current_user.id %>
+　    
 　    <tr>
-　      <td><%= spending.start_time.strftime("%Y/%m/%d") %></td>
-　      <td><%= spending.spending_amount %>円</td>
-　      <td><%= spending.memo %></td>
+　      <td>
+　          <%= spending.start_time.strftime("%Y/%m/%d") %>
+　       </td>
+　      <td>
+　        <%= link_to spending_path(spending), class:"text-dark" do %>
+　          <%= spending.spending_amount %>円
+　        <% end %>
+　     </td>
+　      <td>
+　          <%= spending.memo %>
+　      </td>
 　    </tr>
+　    
 　    <% end %>
 　    <% end %>
 　  </tbody>

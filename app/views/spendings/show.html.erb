@@ -23,7 +23,7 @@
       <h4>
         <%= link_to "戻る", spendings_path, class:"text-dark" %>|
         <%= link_to "編集", edit_spending_path, class:"text-dark" %>|
-        <%= link_to "削除", spending_path, class:"text-dark", method: :delete %>
+        <%= link_to "削除", spending_path, class:"text-dark", method: :delete, data: {confirm: "削除しますか？"} %>
       </h4>
     </div>
   </div>

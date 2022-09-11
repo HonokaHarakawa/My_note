@@ -7,9 +7,20 @@ class SpendingsController < ApplicationController
 
   def lastmonth
     @user = current_user
+    @genres = Genre.all
     @spendings = @user.spendings.where(start_time: Time.current.all_month)
     @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
     @chart = @last_month.joins(:genre).group("genres.name").sum(:spending_amount).sort_by {|_,v|v}.reverse.to_h
+  end
+
+  def graph
+    @user = current_user
+    @genres = Genre.all
+    @spendings = @user.spendings.where(start_time: Time.current.all_month)
+    @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
+    @month = Date.today.month
+    @chart = @spendings.joins(:genre).group("genres.name").sum(:spending_amount).sort_by {|_,v|v}.reverse.to_h
+
   end
 
   def show

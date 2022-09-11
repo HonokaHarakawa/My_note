@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
+  
+  get 'top' => 'home#top'
+  root 'home#top'
   devise_for :users
-  devise_scope :user do
-    root "devise/sessions#new"
-  end
   resources :users do
-    resources :genres, only: [:show]
+    resources :genres, only: [:show] do
+    end
   end
-
+  
   resources :spendings do
     collection do
       get 'lastmonth'
+      get 'graph'
     end
   end
   resources :posts do
