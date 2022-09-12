@@ -1,40 +1,24 @@
 <div class="container col-10">
   <div class="row">
-    <div class="col-5 text-center mt-5">
+    <div class="col-10 mt-5">
       <h3><%= @genre.name %>一覧</h3>
     </div>
-  </div>
 
-  <div class="col-6">
-　<table class="table">
-　  <thead>
-　    <tr>
-　      <th>日付</th><th>金額</th><th></th>
-　    </tr>
-　  </thead>
-　  <tbody>
-　    <% @spendings.each do |spending| %>
-　    <% if spending.user_id == current_user.id %>
-　    
-　    <tr>
-　      <td>
-　          <%= spending.start_time.strftime("%Y/%m/%d") %>
-　       </td>
-　      <td>
-　        <%= link_to spending_path(spending), class:"text-dark" do %>
-　          <%= spending.spending_amount %>円
-　        <% end %>
-　     </td>
-　      <td>
-　          <%= spending.memo %>
-　      </td>
-　    </tr>
-　    
-　    <% end %>
-　    <% end %>
-　  </tbody>
-　</table>
-　</div>
+    <div class="col-10">
+  　   <% @spendings.each do |spending| %>
+  　    <% if spending.user_id == current_user.id %>
+  　      <ul>
+  　          <li>
+  　            <%= link_to spending_path(spending), class:"text-dark" do %>
+  　              <%= spending.start_time.strftime("%Y/%m/%d") %>
+  　              <%= spending.spending_amount %>円
+  　              <%= spending.memo %>
+  　            <% end %>
+  　          </li>
+  　　　　</ul>
+  　    <% end %>
+  　   <% end %>
+　  </div>
 
 
 

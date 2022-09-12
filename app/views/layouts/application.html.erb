@@ -10,41 +10,46 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light pt-5">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">My note</a>
-        <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
+    <div class="footerFixed">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">My note</a>
 
-            <li class="nav-item">
-              <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
-            </li>
-            
-            <li class="nav-item">
-              <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
-            </li>
-            
-            <li class="nav-item">
-              <%= link_to "Graph", graph_spendings_path, class:'nav-link text-dark' %>
-            </li>
-            
-            <li class="nav-item">
-              <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
-            </li>
+          <div class="collapse navbar-collapse justify-content-right">
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
 
-            <li class="nav-item">
-              <%= link_to "Timeline",  posts_path, class:'nav-link text-dark' %>
-            </li>
+              <li class="nav-item">
+                <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
-            </li>
-            <% end %>
-          </ul>
+              <li class="nav-item">
+                <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Graph", graph_spendings_path, class:'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Timeline",  posts_path, class:'nav-link text-dark' %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
+    <main class="mb-auto">
     <% if flash[:notice] %>
       <p class="notice"><%= notice %></p>
     <% end %>
@@ -52,5 +57,11 @@
       <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
+    </main>
+    <footer class="bg-light text-dark pt-3 pb-3">
+      <h4>My note</h4>
+    </footer>
+    </div>
   </body>
+
 </html>
