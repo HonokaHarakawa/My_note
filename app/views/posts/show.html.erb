@@ -35,9 +35,12 @@
           <%= @post.likes.count %>
           <% if @post.user_id == current_user.id %>
             <%= link_to "いいね一覧", post_likes_path(@post), class:"text-dark" %>
+            <%= link_to "編集", edit_post_path(@post), class:"text-dark" %>
+            <%= link_to "削除", post_path(@post), class:"text-dark", method: :delete, data: {confirm: "削除しますか？"} %>
+            <%= link_to "戻る", posts_path, class:"text-dark" %>
+          <% else %>
+            <%= link_to "戻る", posts_path, class:"text-dark" %>
           <% end %>
-          <%= link_to "編集", edit_post_path(@post), class:"text-dark" %>
-          <%= link_to "削除", post_path(@post), class:"text-dark", method: :delete, data: {confirm: "削除しますか？"} %>
       </div>
     </div>
 

@@ -3,15 +3,18 @@
     <div class="col-5 text-center mt-5">
        <h2>新規投稿</h2>
     </div>
+
+    <% if @post.errors.any? %>
+    <div class="col-6 text-danger mt-5">
+      <%= @post.errors.count %>件のエラーが発生しました
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      </div>
+    <% end %>
   </div>
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-  <% @post.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-  </ul>
-<% end %>
     <%= form_with model: @post, url: posts_path, local: true do |f| %>
 
   <div class="row">
@@ -45,7 +48,5 @@
       <%= f.submit "投稿", class:"btn btn-outline-secondary" %>
     </div>
   </div>
-
-
     <% end %>
 </div>

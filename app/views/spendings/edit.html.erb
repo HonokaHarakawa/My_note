@@ -17,7 +17,6 @@
     </div>
     <% end %>
   </div>
-
     <%= form_with model: @spending, url: spending_path(@spending), local: true do |f| %>
   <div class="row">
     <div class="col-5 text-right mb-3">
@@ -61,4 +60,10 @@
     </div>
   </div>
     <% end %>
+
+  <div class="row">
+    <div class="col-6 text-center">
+      <h4><%= link_to "戻る", spending_path(@spending), class:"text-dark" %></h4>
+    </div>
+  </div>
 </div>
