@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.where.not(id: current_user.id)
-  end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.all.order(created_at: :desc)
     @genres = Genre.all
     @spendings = @user.spendings.where(start_time: Time.current.all_month)
     @last_month = @user.spendings.where(start_time: Time.current.last_month.all_month)
@@ -20,8 +17,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path, notice: "プロフィールが更新されました"
+    if @user.update(user_params)
+       flash[:success]= 'プロフィールが更新されました'
+       redirect_to user_path
+    else
+       render :edit
+    end
   end
 
 

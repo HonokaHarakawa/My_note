@@ -1,6 +1,6 @@
 class Spending < ApplicationRecord
   belongs_to :user
   belongs_to :genre
-  validates :genre_id, presence: true
-  validates :spending_amount , numericality: true
+  validates :spending_amount, numericality: { only_integer: true }
+  validates :genre, presence: true
 end

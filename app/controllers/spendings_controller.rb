@@ -37,8 +37,8 @@ class SpendingsController < ApplicationController
     @spending = Spending.new(spending_params)
     @spending.user_id = current_user.id
     if @spending.save
-    flash[:success] = '登録が完了しました'
-    redirect_to new_spending_path
+      flash[:success] = "登録が完了しました。"
+      redirect_to new_spending_path
     else
       render :new
     end
@@ -51,8 +51,12 @@ class SpendingsController < ApplicationController
 
   def update
     @spending = Spending.find(params[:id])
-    @spending.update(spending_params)
-    redirect_to spendings_path
+    if @spending.update(spending_params)
+       flash[:success] = "支出が編集されました"
+       redirect_to spendings_path
+    else
+       render :edit
+    end
   end
 
   def destroy

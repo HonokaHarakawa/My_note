@@ -9,31 +9,35 @@
 
   <div class="row justify-content-center">
   <div class="col-8">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ユーザー名</th><th>性別</th><th>お住まい</th><th>職業</th>
-        </tr>
-      </thead>
-      <tbody>
         <% @post.liked_users.each do |user| %>
-        <tr>
-          <td>
             <% if user.id == current_user.id %>
-              <%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
-              <%= user.name %>（自分）
+            <ul>
+              <li>
+                <%= link_to user_path(user), class:"text-dark" do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+                  <%= user.name %>（自分）
+                  <%= user.sex_i18n %>
+                  <%= user.location %>
+                  <%= user.profession %>
+                <% end %>
+              </li>
+            </ul>
             <% else %>
-              <%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
-              <%= user.name %>
+            <ul>
+              <li>
+                <%= link_to user_path(user), class:"text-dark" do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+                  <%= user.name %>
+                  <%= user.sex_i18n %>
+                  <%= user.location %>
+                  <%= user.profession %>
+                <% end %>
+              </li>
+            </ul>
             <% end %>
-          </td>
-          <td><%= user.sex_i18n %></td>
-          <td><%= user.location %></td>
-          <td><%= user.profession %></td>
-        </tr>
+
+
         <% end %>
-      </tbody>
-    </table>
   </div>
   </div>
 

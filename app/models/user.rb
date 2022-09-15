@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum sex: { male: 0, woman: 1 }
-  has_many :incomes
-  validates :name, presence: true
+  validates :name,
+    length: { minimum: 1, maximum: 10 }
+  validates :email, presence: true
+  validates :is_active, inclusion: { in: [true, false] }
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :spendings
@@ -15,5 +17,5 @@ class User < ApplicationRecord
   def already_liked?(post)
     self.likes.exists?(post_id: post.id)
   end
-  
+
 end

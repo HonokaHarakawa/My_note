@@ -1,17 +1,25 @@
-<% if @spending.errors.any? %>
-<div class="col-6 text-center mt-2">
-  <%= @spending.errors.count %>件のエラーが発生しました
-</div>
-
-<% end %>
-<%= flash[:success] %>
 <div class="container col-12">
-
       <div class="row">
-        <div class="col-4 text-center mt-5">
-          <h3>支出登録</h3>
+        <div class="col-6 text-center mt-5 mb-5">
+          <h2>支出登録</h2>
+        </div>
+        <div class="col-6 text-center mt-5 text-success">
+          <h4><%= flash[:success] %></h4>
         </div>
       </div>
+
+
+
+      <% if @spending.errors.any? %>
+        <%= @spending.errors.count %>件のエラーが発生しました
+        <ul>
+        <% @spending.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      <% end %>
+
+
         <%= form_with model: @spending, url: spendings_path, local: true do |f| %>
       <div class="row">
         <div class="col-5 text-right mb-3">

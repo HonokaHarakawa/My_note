@@ -1,14 +1,22 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+
+      spending:
+        genre: カテゴリー
+        spending_amount: 金額
+        
+      post:
+        body: 本文
+
   enums:
     user:
       sex:
         male: '男性'
         woman: '女性'
 
-    spending:
-      payment_method:
-        cash: '現金'
-        credit: 'クレジット'
-        electric: '電子マネー'
-        code: 'コード決済'
-        
+

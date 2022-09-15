@@ -10,28 +10,28 @@
   <%= form_with model: @post, url: post_path(@post), local: true do |f| %>
 
    <div class="row">
-      <div class="col-5 text-right">
+      <div class="col-5 text-right mt-3">
         <%= f.label :画像 %>
       </div>
-      <div class="col-5">
+      <div class="col-5 mt-3">
         <%= f.attachment_field :image %>
       </div>
     </div>
-  
-  
+
+
     <div class="row">
-      <div class="col-5 text-right mt-3">
+      <div class="col-5 text-right mt-4">
         <%= f.label :本文 %>
       </div>
-      <div class="col-5 mt-3">
+      <div class="col-5 mt-4">
         <%= f.text_area :body %>
       </div>
     </div>
-  
-  
+
+
     <div class="row">
-      <div class="col-12 text-center">
-        <%= f.submit "投稿" %>
+      <div class="col-12 text-center mt-3">
+        <%= f.submit "投稿", class:"btn btn-outline-secondary" %>
       </div>
     </div>
 
