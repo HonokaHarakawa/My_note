@@ -1,5 +1,11 @@
 <div class="container col-12 text-center">
-
+  
+  <div class="row">
+    <div class="col-12 text-center mt-3 text-success">
+      <%= flash[:success] %>
+    </div>
+  </div>
+  
   <div class="row">
       <div class="col-9 mb-3 mt-3">
       <%= link_to user_path(@post.user_id), class:"text-dark" do %>
