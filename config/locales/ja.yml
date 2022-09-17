@@ -13,6 +13,9 @@ ja:
       post:
         body: 本文
 
+      comment:
+        content: コメント
+
   enums:
     user:
       sex:

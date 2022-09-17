@@ -1,11 +1,21 @@
 <div class="container col-12 text-center">
-  
+
   <div class="row">
     <div class="col-12 text-center mt-3 text-success">
       <%= flash[:success] %>
     </div>
+    <% if @comment.errors.any? %>
+    <div class="col-12 text-center text-danger mt-3">
+      <%= @comment.errors.count %>件のエラーが発生しました
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+      </ul>
+      </div>
+    <% end %>
   </div>
-  
+
   <div class="row">
       <div class="col-9 mb-3 mt-3">
       <%= link_to user_path(@post.user_id), class:"text-dark" do %>
@@ -22,7 +32,7 @@
     </div>
 
     <div class="row">
-      <div class="col-12 text-center mt-3 mb-5">
+      <div class="col-12 text-center mt-3 mb-2">
         <%= @post.body %>
       </div>
     </div>
@@ -39,6 +49,43 @@
           <% end %>
         <% end %>
           <%= @post.likes.count %>
+          コメント<%= @post.comments.count %>件
+      </div>
+    </div>
+    <%= form_with(model:[@post, @comment], local: true)  do |f| %>
+      <div class="row">
+        <div class="col-12 text-center mb-2">
+          <%= f.text_field :content %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center mb-3">
+          <%= f.submit 'コメント', class:"btn btn-outline-secondary" %>
+        </div>
+      </div>
+          <% end %>
+    <div class="row">
+      <div class="col-12 text-center mt-2">
+        <p>コメント一覧</p>
+      </div>
+    </div>
+
+          <% @comments.each do |comment| %>
+      <div class="row">
+        <div class="col-12 text-center">
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+          <%= comment.user.name %>
+          <%= comment.content %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", comment_path(comment), method: :delete, class:"text-dark" %>
+        <% end %>
+        </div>
+      </div>
+          <% end %>
+
+
+        <div class="row">
+          <div class="col-12 text-center">
           <% if @post.user_id == current_user.id %>
             <%= link_to "いいね一覧", post_likes_path(@post), class:"text-dark" %>
             <%= link_to "編集", edit_post_path(@post), class:"text-dark" %>

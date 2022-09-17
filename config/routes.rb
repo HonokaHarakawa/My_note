@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'top' => 'home#top'
   root 'home#top'
   devise_for :users
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:show] do
     end
   end
-  
+
   resources :spendings do
     collection do
       get 'lastmonth'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resource :likes, only: [:create, :destroy, :show]
-   end
-
+    resource :comments, only: [:create]
+  end
+  resources :comments, only: [:destroy]
 end
