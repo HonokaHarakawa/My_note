@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_26_075715) do
+ActiveRecord::Schema.define(version: 2022_09_26_080702) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_09_26_075715) do
     t.integer "spending_amount"
     t.integer "genre_id"
     t.string "memo"
-    t.date "start_time"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
