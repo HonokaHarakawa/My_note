@@ -2,9 +2,9 @@
 ## サイト概要
 毎日簡単にシンプルに家計簿をつけることができる家計簿アプリです。支出を入力し、何に使ったかしっかり分類します。円グラフを用いり
 その月の支出を一目で確認できるようになっています。
-買いたいものやしたいこと、貯金の目標などを書けるページを設けモチベーションアップに繋がります。
+買いたいものやしたいこと、目標などを書けるページを設けモチベーションアップに繋がります。
 性別、所在地、職業でプロフィール設定を行い非公開機能付きで、自分の家計簿や目標ページを公開することができます。そして他の人の家計簿も
-閲覧でき、いいね！ができる機能もあります。
+閲覧でき、投稿にいいね！やコメントができる機能もあります。
 
 ### サイトテーマ
 簡単にお金の管理ができる家計簿アプリ
@@ -21,7 +21,7 @@
 お金を使った時。
 
 ## 設計書
-...
+https://drive.google.com/file/d/153q3ZainE-GVuqmiI7t9r4b0IYBFpTFi/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1QZq-FPgnYOgfdMHejBUhuINV4AYnheL05FC5eyCgMTA/edit?usp=sharing
@@ -31,7 +31,7 @@ https://docs.google.com/spreadsheets/d/1QZq-FPgnYOgfdMHejBUhuINV4AYnheL05FC5eyCg
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Cloud9,EC2,RDS
 
 ## 使用素材
 - 写真素材　https://www.pakutaso.com/
