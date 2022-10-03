@@ -92,7 +92,7 @@
       <% @posts.each do |post| %>
     <div class="row">
       <div class="col-10 mb-3">
-        <%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", class: "rounded-circle" %>
+        <%= attachment_image_tag post.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size:'30x30', class: "rounded-circle" %>
         <%= post.user.name %>
       </div>
     </div>
