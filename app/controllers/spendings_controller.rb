@@ -25,6 +25,11 @@ class SpendingsController < ApplicationController
 
   def show
     @spending = Spending.find(params[:id])
+    if @spending.user == current_user
+      render "show"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def new
@@ -46,6 +51,11 @@ class SpendingsController < ApplicationController
 
   def edit
     @spending = Spending.find(params[:id])
+    if @spending.user == current_user
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
     @genres = Genre.all
   end
 

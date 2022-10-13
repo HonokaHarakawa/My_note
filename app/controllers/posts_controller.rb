@@ -9,6 +9,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
+    if @post.user.is_active == true || @post.user == current_user
+      render "show"
+    else
+      redirect_to user_path(current_user)
+    end
+
   end
 
   def new
@@ -28,6 +34,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
