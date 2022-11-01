@@ -86,3 +86,15 @@ footer{
 .main-visual-text {
   color: black;
 }
+
+
+@media (max-width: 768px) {
+  .main-visual {
+    height: 550px;
+    background-image: image-url("bread.jpg");
+  }
+  
+  .main-visual-text {
+    font-size: 20px;
+  }
+}
