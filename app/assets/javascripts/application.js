@@ -20,3 +20,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#global-nav').fadeToggle();
+    event.preventDefault();
+  });
+});
