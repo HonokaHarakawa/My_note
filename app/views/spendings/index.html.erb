@@ -14,17 +14,17 @@
     <%= month_calendar events: @spendings do |date, spendings| %>
       <%= date.day %>
 
+      <% @sum = 0 %>
       <% spendings.each do |spending| %>
-        <div>
-          <%= link_to spending_path(spending) do %>
-          <div class="text-dark">
-            <%= spending.genre.name %>
-            ￥<%= spending.spending_amount.to_s(:delimited) %>
-          </div>
-          <% end %>
+        <% @sum += spending.spending_amount %>
+      <% end %>
+
+        <div class="spending text-dark">
+            <%= @sum.to_s(:delimited) %>
 
         </div>
-      <% end %>
+
+
     <% end %>
 </div>
 

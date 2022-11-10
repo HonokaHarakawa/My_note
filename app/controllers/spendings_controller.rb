@@ -4,6 +4,7 @@ class SpendingsController < ApplicationController
     @user = current_user
     @spendings = @user.spendings.all
   end
+  
 
   def lastmonth
     @user = current_user
