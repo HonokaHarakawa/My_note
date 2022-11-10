@@ -4,18 +4,18 @@
       <h3><%= @genre.name %>一覧</h3>
     </div>
 
-    <div class="col-10">
+    <div class="col-xs-12 col-md-10">
   　   <% @spendings.each do |spending| %>
   　    <% if spending.user_id == current_user.id %>
-  　      <ul>
-  　          <li>
-  　            <%= link_to spending_path(spending), class:"text-dark" do %>
-  　              <%= spending.start_time.strftime("%Y/%m/%d") %>
-  　              <%= spending.spending_amount %>円
-  　              <%= spending.memo %>
-  　            <% end %>
-  　          </li>
-  　　　　</ul>
+  　    <ul>
+  　      <li>
+  　        <%= link_to spending_path(spending), class:"text-dark" do %>
+  　          <%= spending.start_time.strftime("%Y/%m/%d") %>
+  　          <%= spending.spending_amount %>円
+  　          <%= spending.memo %>
+  　        <% end %>
+  　      </li>    
+  　 　 </ul>
   　    <% end %>
   　   <% end %>
 　  </div>

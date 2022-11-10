@@ -11,21 +11,16 @@
   </head>
 
   <body>
-    <div class="footerFixed">
     <header>
+      
         <a class="navbar-brand" href="/">My note</a>
-        <div id="hm-icon">
-          <a class="menu-trigger" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-        </div>
-
-        <nav id ="global-nav">
+　　　　　
+          
+            
+            
               <% if user_signed_in? %>
-
-
+            <nav id="global-nav">
+              <ul class="nav-list">
               <li class="nav-item">
                  <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
               </li>
@@ -49,10 +44,20 @@
               <li class="nav-item">
                 <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
               </li>
+              </ul>
+            </nav>
+              <div id="hm-icon">
+                <a class="menu-trigger" href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </a>
+              </div>
               <% end %>
+            
       </nav>
     </header>
-    <main class="mb-auto">
+    <main>
     <% if flash[:notice] %>
       <p class="notice text-center text-success mt-3"><%= notice %></p>
     <% end %>
@@ -61,11 +66,15 @@
     <% end %>
     <%= yield %>
     </main>
-
-    <footer class="text-dark pt-3 pb-3">
-      <p>@ All rights reserved by Harakawa.</p>
+    
+    <footer>
+        <div class="row">
+          <div class="col-md-12">
+            <p>@ All rights reserved by Harakawa.</p>
+          </div>
+        </div>
     </footer>
-    </div>
+
     <script src="application.js"></script>
   </body>
 

@@ -38,10 +38,10 @@
 
   <div class="row">
     <div class="col-5 text-right mb-3">
-      <%= f.label :カテゴリー %>
+      <%= f.label :genre_id, "カテゴリー" %>
     </div>
     <div class="col-4">
-      <%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name %>
+      <%= f.select :genre_id, {'食費': 1, '日用品': 2, '衣服': 3, '美容': 4, '教育費': 5, '光熱費': 6, '交際費': 7, '交通費': 8, '通信費': 9, '住居費': 10, '趣味・娯楽': 11, 'その他': 12},{ include_blank: '選択してください'}, { class: 'form-control' , required: true }  %>
     </div>
   </div>
 
