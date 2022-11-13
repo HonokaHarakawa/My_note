@@ -8,53 +8,61 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <header>
-      
-        <a class="navbar-brand" href="/">My note</a>
-　　　　　
+      <a class="navbar-brand" href="/">My note</a>
+        <% if user_signed_in? %>
+          <div id="drawer_toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           
-            
-            
-              <% if user_signed_in? %>
-            <nav id="global-nav">
-              <ul class="nav-list">
-              <li class="nav-item">
-                 <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to "Graph", graph_spendings_path, class:'nav-link text-dark' %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to "Timeline",  posts_path, class:'nav-link text-dark' %>
-              </li>
-
-              <li class="nav-item">
-                <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
-              </li>
+            <nav id="global_nav">
+              <ul>
+                <li>
+                  <a class="nav-item">
+                     <%= link_to "MyPage", user_path(current_user), class:'nav-link text-dark' %>
+                   </a>
+                </li>
+  
+                <li>
+                  <div class="nav-item">
+                    <%= link_to "Spending", new_spending_path, class:'nav-link text-dark' %>
+                  </div>
+                </li>
+  
+                <li>
+                  <div class="nav-item">
+                    <%= link_to "Graph", graph_spendings_path, class:'nav-link text-dark' %>
+                  </div>
+                </li>
+  
+                <li>
+                  <div class="nav-item">
+                    <%= link_to "Calendar", spendings_path, class:'nav-link text-dark' %>
+                  </div>
+                </li>
+  
+                <li>
+                  <div class="nav-item">
+                    <%= link_to "Timeline",  posts_path, class:'nav-link text-dark' %>
+                  </div>
+                </li>
+  
+                <li>
+                  <div class="nav-item">
+                    <%= link_to "LogOut",  destroy_user_session_path, method: :delete, class:'nav-link text-dark' %>
+                  </div>
+                </li>
               </ul>
             </nav>
-              <div id="hm-icon">
-                <a class="menu-trigger" href="#">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </a>
-              </div>
-              <% end %>
-            
+          
+        <% end %>
+
       </nav>
     </header>
     <main>
@@ -66,16 +74,23 @@
     <% end %>
     <%= yield %>
     </main>
-    
-    <footer>
-        <div class="row">
-          <div class="col-md-12">
-            <p>@ All rights reserved by Harakawa.</p>
-          </div>
-        </div>
-    </footer>
 
-    <script src="application.js"></script>
+    <footer>
+      <div class="row">
+        <div class="col-md-12">
+          <p>@ All rights reserved by Harakawa.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+      $(function(){
+        $("#drawer_toggle").click(function(){
+          $(this).toggleClass("open");
+          $("#global_nav").slideToggle();
+        });
+      });
+    </script>
   </body>
 
 
