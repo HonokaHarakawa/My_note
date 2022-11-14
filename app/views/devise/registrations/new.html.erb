@@ -1,25 +1,24 @@
 <div class="container col-12">
   <div class="row">
-    <div class="col-6 text-center mt-5">
+    <div class="col-6 text-center mt-5 mb-3">
       <h2>新規登録</h2>
     </div>
   </div>
 
-
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :プロフィール画像 %>
     </div>
-    <div class="col-6">
+    <div class="col-md-6 mb-3">
       <%= f.attachment_field :profile_image %>
     </div>
   </div>
 
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :ニックネーム（必須） %>
     </div>
     <div class="col-6">
@@ -29,7 +28,7 @@
 
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :性別 %>
     </div>
     <div class="col-6">
@@ -42,7 +41,7 @@
 
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :職業 %>
     </div>
     <div class="col-6">
@@ -51,7 +50,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :お住まい（都道府県）%>
     </div>
     <div class="col-6">
@@ -60,7 +59,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :メールアドレス（必須） %>
     </div>
     <div class="col-6">
@@ -69,7 +68,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :パスワード %>
 
     <% if @minimum_password_length %>
@@ -82,7 +81,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :パスワード（確認） %>
     </div>
     <div class="col-6">
@@ -91,7 +90,7 @@
   </div>
 
   <div class="row">
-    <div class="col-6 text-right mb-3">
+    <div class="col-6 text-md-right mb-3">
       <%= f.label :あなたの家計簿をみんなに公開しますか？ %>
     </div>
     <div class="col-6">

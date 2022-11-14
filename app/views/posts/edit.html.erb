@@ -1,7 +1,7 @@
 <div class="container">
   
   <div class="row">
-    <div class="col-5 text-center">
+    <div class="col-5 text-center mt-3">
       <%= link_to '戻る', :back, class:"text-dark" %>
     </div>
   </div>
@@ -16,20 +16,20 @@
   <%= form_with model: @post, url: post_path(@post), local: true do |f| %>
 
    <div class="row">
-      <div class="col-5 text-right mt-3">
+      <div class="col-md-5 text-md-right mt-3">
         <%= f.label :画像 %>
       </div>
-      <div class="col-5 mt-3">
+      <div class="col-md-5 mt-3">
         <%= f.attachment_field :image %>
       </div>
     </div>
 
 
     <div class="row">
-      <div class="col-5 text-right mt-4">
+      <div class="col-md-5 text-md-right mt-4">
         <%= f.label :本文 %>
       </div>
-      <div class="col-5 mt-4">
+      <div class="col-md-5 mt-4">
         <%= f.text_area :body %>
       </div>
     </div>

@@ -50,6 +50,7 @@ header nav ul li {
 }
 
 
+
 body {
  font-family: fantasy;
  background-color: #FFF7E9;
@@ -90,6 +91,12 @@ footer {
   background-color: #e6f3e0;
 }
 
+.pagination {
+  width: 100%;
+  justify-content: center;
+}
+
+
 @media (max-width: 768px) {
 
   header {
@@ -97,14 +104,15 @@ footer {
   }
 
   header nav {
-    box-sizing: border-box;
     position: fixed;
-    top: 60px;
-    display: none;
-    width: 100%;
-    height: calc(100% - 60px);
+    top: 0;
+    left: 0;
     background: #e6f3e0;
-    
+    color: #000000;
+    width: 100%;
+    min-height: 100%;
+    display: none;
+    z-index: 9;
   }
 
   header nav ul {
@@ -115,15 +123,11 @@ footer {
   }
 
   header nav ul li {
-    display: block;
-    padding: 25px;
-    border-radius: 5px;
     color: #000000;
-    font-size: 1.8rem;
-    text-align: center;
     text-decoration: none;
+    font-weight: bold;
   }
-  
+
   #drawer_toggle {
     z-index: 200;
     box-sizing: border-box;
@@ -134,7 +138,7 @@ footer {
     width: 60px;
     height: 60px;
   }
-  
+
   #drawer_toggle span {
     position: absolute;
     top: 19px;
@@ -146,36 +150,36 @@ footer {
     background-color: #000000;
     vertical-align: top;
   }
-  
-  
+
+
   #drawer_toggle span:nth-child(2) {
     margin-top: 10px;
   }
-  
+
   #drawer_toggle span:last-child {
     margin-top: 20px;
   }
-  
+
   #drawer_toggle.open span {
     top: 29px;
     left: 14px;
     width: 35px;
     margin: 0;
   }
-  
+
   #drawer_toggle.open span:first-child {
     transform: rotate(45deg);
   }
-  
+
   #drawer_toggle.open span:nth-child(2) {
     display: none;
   }
-  
+
   #drawer_toggle.open span:last-child {
     transform: rotate(-45deg);
   }
-  
-  
+
+
 
   .main-visual {
     height: 510px;
@@ -214,4 +218,5 @@ footer {
   .spending {
     font-size: 10px;
   }
+  
 }
